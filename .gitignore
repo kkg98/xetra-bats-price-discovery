@@ -1,0 +1,11 @@
+# R workspace snapshots and history — never commit these
+*.RData
+*.Rhistory
+*.RDS
+
+# Script-generated outputs (reproduced on each run)
+output/
+
+# OS junk
+.DS_Store
+Thumbs.db
