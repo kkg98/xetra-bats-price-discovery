@@ -1,5 +1,5 @@
 # =============================================================================
-# Cross-Exchange Price Discovery: XETRA vs BATS Europe
+# Cross-Atlantic Price Discovery: XETRA (EUR) vs Cboe BZX / US BATS (USD)
 # Market Microstructures — WU Wien, Winter 2024
 # Author: Katarina Gregusova
 #
@@ -8,9 +8,16 @@
 #   and the informativeness of the trading process."
 #   Journal of Financial Markets, 9(2), 144–161.
 #
-# Six dual-listed US stocks on XETRA (Frankfurt) and BATS Europe, Nov–Dec 2024.
-# 30-second OHLCV bars. Analysis restricted to the US Open overlap session
-# (14:30–21:00 UTC) where both venues trade simultaneously.
+# Six stocks dual-listed on XETRA (Frankfurt, EUR-quoted) and Cboe BZX /
+# US BATS (USD-quoted), Oct 31 – Dec 9, 2024. 30-second OHLCV bars.
+# Analysis restricted to the US Open overlap session (14:30–21:00 UTC)
+# where both venues trade simultaneously.
+#
+# Note on currency: the script does NOT convert prices to a common currency,
+# so any test on price levels (mean deviation, Engle-Granger, Johansen,
+# Granger on levels) implicitly absorbs the EUR/USD exchange rate. The
+# log-return VAR analysis (Sections 9–10) is scale-invariant and is the
+# primary result of the project.
 #
 # Pipeline:
 #   0. Setup & package management
@@ -192,8 +199,9 @@ p_deviations <- ggplot(us_open_devs, aes(x = stock, y = mean_dev, fill = stock))
   scale_fill_brewer(palette = "Set3") +
   labs(
     title = "Mean XETRA − BATS Price Deviation (US Open Session)",
+    subtitle = "Note: XETRA in EUR, BATS in USD — gap is FX-dominated, not a price-discovery signal",
     x     = "Stock",
-    y     = "Mean price deviation (EUR)"
+    y     = "Mean price deviation (XETRA EUR − BATS USD)"
   ) +
   theme_minimal(base_size = 13) +
   theme(plot.title = element_text(hjust = 0.5), legend.position = "none")
@@ -392,7 +400,7 @@ for (pair in names(stock_pairs)) {
     labs(
       title = paste("XETRA vs BATS —", pair, "(US Open)"),
       x     = "XETRA close (EUR)",
-      y     = "BATS close (EUR)"
+      y     = "BATS close (USD)"
     ) +
     theme_minimal(base_size = 13) +
     theme(plot.title = element_text(hjust = 0.5))
@@ -433,8 +441,9 @@ for (pair in names(stock_pairs)) {
     ) +
     labs(
       title = paste("Smoothed Prices & Spread —", pair),
+      subtitle = "XETRA in EUR, BATS in USD",
       x     = NULL,
-      y     = "Price (EUR)"
+      y     = "Price (native currency)"
     ) +
     theme_minimal(base_size = 12) +
     theme(
