@@ -2,13 +2,13 @@
 
 Empirical application of Pascual, Pascual-Fuster & Climent (2006), *"Cross-listing, price discovery and the informativeness of the trading process,"* Journal of Financial Markets, 9(2), 144–161.
 
-The data here pairs **XETRA (Frankfurt, EUR-quoted)** with **Cboe BZX — "US BATS" — (USD-quoted)** for six dual-listed stocks. The two venues only trade simultaneously during the US open, so the analysis is restricted to that overlap window.
+The data here pairs **XETRA (Frankfurt, EUR-quoted)** with **BATS (USA), USD-quoted** for six dual-listed stocks. The two venues only trade simultaneously during the US open, so the analysis is restricted to that overlap window.
 
 ---
 
 ## What the paper asks
 
-When the same stock trades on two markets — e.g. Tesla on Frankfurt's XETRA and on a US venue like Cboe BZX — which venue leads price discovery during the overlap? Does the European exchange set the price that the US venue follows, or does information flow the other way?
+When the same stock trades on two markets — e.g. Tesla on Frankfurt's XETRA and on BATS (USA) — which venue leads price discovery during the overlap? Does the European exchange set the price that the US venue follows, or does information flow the other way?
 
 Pascual et al. study NYSE-listed Spanish stocks that also trade on the Spanish SSE and find that, despite NYSE's much larger volume, the SSE contributes 12–30% of price discovery while the NYSE listing has almost no informative trades. They build on Hasbrouck's (1995) information-share framework and separate two sources of cross-market information asymmetry: shocks that originate *from trading* (informed investors choosing where to execute) and shocks that are *trade-unrelated* (public news, macro announcements). Their empirical counterpart is a Vector Error Correction model that explicitly identifies the unexpected, informative component of each venue's order flow.
 
@@ -17,13 +17,13 @@ The key insight is that a market can have high quoting activity and still contri
 > "A pure satellite market has an uninformative trading process that cannot shed light on the interpretation of public information."
 > — Pascual, Pascual-Fuster & Climent (2006), p. 146
 
-This project replicates the spirit of that question for a different cross-listing pattern: US-headquartered stocks (plus SAP) traded on both XETRA in Frankfurt and Cboe BZX in the US, observed at 30-second resolution.
+This project replicates the spirit of that question for a different cross-listing pattern: US-headquartered stocks (plus SAP) traded on both XETRA in Frankfurt and BATS (USA), observed at 30-second resolution.
 
 ---
 
 ## What this project does
 
-- Loads 30-second OHLCV bars from XETRA (EUR) and Cboe BZX / US BATS (USD) for six dual-listed stocks: Tesla (XETRA: TL0 / BATS: TSLA), Microsoft (MSF / MSFT), Amazon (AMZ / AMZN), NVIDIA (NVD / NVDA), PayPal (2PP / PYPL), and SAP (SAP / SAP).
+- Loads 30-second OHLCV bars from XETRA (EUR) and BATS (USA, USD) for six dual-listed stocks: Tesla (XETRA: TL0 / BATS: TSLA), Microsoft (MSF / MSFT), Amazon (AMZ / AMZN), NVIDIA (NVD / NVDA), PayPal (2PP / PYPL), and SAP (SAP / SAP).
 - Finds the common trading window across all 12 data files (~Oct 31 – Dec 9, 2024) and aligns each series to a complete 30-second timestamp grid.
 - Labels bars by trading session: European-only (07:00–12:00 UTC), Pre-US Open (12:00–14:30 UTC), and US Open (14:30–21:00 UTC). Analysis is restricted to the US Open overlap where both venues trade simultaneously.
 - Computes mean price deviations (XETRA − BATS) per session.
@@ -136,7 +136,7 @@ xetra-bats-price-discovery/
 ├── README.md
 ├── .gitignore
 ├── data/                          # 30-second OHLCV bars (committed)
-│   ├── BATS_AMZN, 30S.csv         # Cboe BZX, USD
+│   ├── BATS_AMZN, 30S.csv         # BATS (USA), USD
 │   ├── BATS_MSFT, 30S.csv
 │   ├── BATS_NVDA, 30S.csv
 │   ├── BATS_PYPL, 30S.csv
@@ -168,4 +168,4 @@ xetra-bats-price-discovery/
 - Hasbrouck, J. (1995). One security, many markets: Determining the contributions to price discovery. *Journal of Finance*, 50(4), 1175–1199.
 - Harris, F. H., McInish, T. H., Shoesmith, G. L., & Wood, R. A. (1995). Cointegration, error correction, and price discovery on informationally linked security markets. *Journal of Financial and Quantitative Analysis*, 30(4), 563–579.
 - Amihud, Y., & Mendelson, H. (1986). Asset pricing and the bid-ask spread. *Journal of Financial Economics*, 17(2), 223–249.
-- Data: 30-second OHLCV bars from XETRA (Frankfurt) and Cboe BZX / US BATS, Oct 31 – Dec 9, 2024 (course-provided, WU Wien Market Microstructures).
+- Data: 30-second OHLCV bars from XETRA (Frankfurt) and BATS (USA), Oct 31 – Dec 9, 2024. Self-collected from TradingView for the WU Wien Market Microstructures course project.

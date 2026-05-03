@@ -1,5 +1,5 @@
 # =============================================================================
-# Cross-Atlantic Price Discovery: XETRA (EUR) vs Cboe BZX / US BATS (USD)
+# Cross-Atlantic Price Discovery: XETRA (EUR) vs BATS (USA, USD)
 # Market Microstructures — WU Wien, Winter 2024
 # Author: Katarina Gregusova
 #
@@ -8,8 +8,8 @@
 #   and the informativeness of the trading process."
 #   Journal of Financial Markets, 9(2), 144–161.
 #
-# Six stocks dual-listed on XETRA (Frankfurt, EUR-quoted) and Cboe BZX /
-# US BATS (USD-quoted), Oct 31 – Dec 9, 2024. 30-second OHLCV bars.
+# Six stocks dual-listed on XETRA (Frankfurt, EUR-quoted) and BATS (USA,
+# USD-quoted), Oct 31 – Dec 9, 2024. 30-second OHLCV bars from TradingView.
 # Analysis restricted to the US Open overlap session (14:30–21:00 UTC)
 # where both venues trade simultaneously.
 #
