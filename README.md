@@ -168,4 +168,4 @@ xetra-bats-price-discovery/
 - Hasbrouck, J. (1995). One security, many markets: Determining the contributions to price discovery. *Journal of Finance*, 50(4), 1175–1199.
 - Harris, F. H., McInish, T. H., Shoesmith, G. L., & Wood, R. A. (1995). Cointegration, error correction, and price discovery on informationally linked security markets. *Journal of Financial and Quantitative Analysis*, 30(4), 563–579.
 - Amihud, Y., & Mendelson, H. (1986). Asset pricing and the bid-ask spread. *Journal of Financial Economics*, 17(2), 223–249.
-- Data: 30-second OHLCV bars from XETRA (Frankfurt) and BATS (USA), Oct 31 – Dec 9, 2024. Self-collected from TradingView for the WU Wien Market Microstructures course project.
+- Data: 30-second OHLCV bars from XETRA (Frankfurt) and BATS (USA), Oct 31 – Dec 9, 2024. Self-collected from TradingView.
